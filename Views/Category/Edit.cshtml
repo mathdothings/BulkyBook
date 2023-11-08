@@ -7,10 +7,10 @@
 
     <div class="row pt-4 pb-2">
         <div class="col-12">
-            <h2 class="text-primary">Create Category</h2>
+            <h2 class="text-primary">Edit Category</h2>
             <hr>
         </div>
-        <form method="post">
+        <form method="post" asp-action="Edit">
             <div class="mt-4 container row">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="col-6">
@@ -24,7 +24,7 @@
                     <span asp-validation-for="DisplayOrder" class="text-danger d-inline-block mt-1"></span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-success ms-4"><i class="bi bi-check-square me-2"></i>Create</button>
+            <button type="submit" class="btn btn-success ms-4"><i class="bi bi-check-square me-2"></i>Update</button>
         </form>
     </div>
 </div>

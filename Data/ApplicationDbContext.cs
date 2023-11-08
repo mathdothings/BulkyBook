@@ -1,5 +1,6 @@
 using BulkyBookWeb.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace BulkyBookWeb.Data;
 
@@ -10,4 +11,13 @@ public class ApplicationDbContext : DbContext
     }
     
     public DbSet<Category> Categories { get; set; }
+    
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+
+        modelBuilder.Entity<Category>(builder =>
+        {
+            builder.Property(i => i.Created).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
+        });
+    }
 }
