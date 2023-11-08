@@ -63,4 +63,30 @@ public class CategoryController : Controller
         _database.SaveChanges();
         return RedirectToAction("Index");
     }
+    
+    [HttpGet]
+    public IActionResult Delete(int? id)
+    {
+        if (id is null or <= 0)
+        {
+            return NotFound();
+        }
+
+        var categoryFromDatabase = _database.Categories.Find(id);
+        if (categoryFromDatabase == null)
+        {
+            return NotFound();
+        }
+        
+        return View(categoryFromDatabase);
+    }
+    
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeletePost(Category category)
+    {
+        _database.Remove(category);
+        _database.SaveChanges();
+        return RedirectToAction("Index");
+    }
 }
