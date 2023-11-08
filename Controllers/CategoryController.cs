@@ -83,7 +83,7 @@ public class CategoryController : Controller
     
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult DeletePost(Category category)
+    public IActionResult Delete(Category category)
     {
         _database.Remove(category);
         _database.SaveChanges();
