@@ -11,10 +11,9 @@ public class ApplicationDbContext : DbContext
     }
 
     public DbSet<Category> Categories => Set<Category>();
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
         modelBuilder.Entity<Category>(builder =>
         {
             builder.Property(i => i.Created).Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Ignore);
