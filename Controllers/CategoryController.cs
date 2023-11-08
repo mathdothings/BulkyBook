@@ -24,18 +24,18 @@ public class CategoryController : Controller
     {
         return View();
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Create(Category category)
     {
-        if(!ModelState.IsValid) return View(category);
-        
+        if (!ModelState.IsValid) return View(category);
+
         _database.Add(category);
         _database.SaveChanges();
         return RedirectToAction("Index");
     }
-    
+
     [HttpGet]
     public IActionResult Edit(int? id)
     {
@@ -49,21 +49,21 @@ public class CategoryController : Controller
         {
             return NotFound();
         }
-        
+
         return View(categoryFromDatabase);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Edit(Category category)
     {
-        if(!ModelState.IsValid) return View(category);
-        
+        if (!ModelState.IsValid) return View(category);
+
         _database.Update(category);
         _database.SaveChanges();
         return RedirectToAction("Index");
     }
-    
+
     [HttpGet]
     public IActionResult Delete(int? id)
     {
@@ -77,10 +77,10 @@ public class CategoryController : Controller
         {
             return NotFound();
         }
-        
+
         return View(categoryFromDatabase);
     }
-    
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult Delete(Category category)
